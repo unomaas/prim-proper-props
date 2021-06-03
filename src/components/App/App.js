@@ -1,17 +1,25 @@
+//#region ⬇⬇ All document setup below:
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import Header from "../Header/Header";
+//#endregion ⬆⬆ All document setup above. 
 
 function App() {
+  //#region ⬇⬇ All state variables & app load below:
+  // ⬇ State variables:
   let [guestList, setGuestList] = useState([]);
   let [newGuestName, setNewGuestName] = useState('');
   let [newGuestMeal, setNewGuestMeal] = useState('false');
 
-  //On load, get guests
+  // ⬇ On load, get guests:
   useEffect(() => {
     getGuests()
   }, [])
+  //#endregion ⬆⬆ All state variables & app load above. 
 
+  //#region ⬇⬇ All CRUD routes below:
+  // ⬇ getGuests GET request:
   const getGuests = () => {
     axios.get('/guests')
       .then(response => {
@@ -23,7 +31,7 @@ function App() {
       })
   }
 
-
+  // ⬇ addGuest POST request:
   const addGuest = () => {
     axios.post('/guests', { name: newGuestName, kidsMeal: newGuestMeal })
       .then(response => {
@@ -38,8 +46,9 @@ function App() {
         console.log(err);
       })
   };
+  //#endregion ⬆⬆ All CRUD routes above. 
 
-
+  // ⬇ handleSubmit: 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (newGuestName) {
@@ -51,11 +60,14 @@ function App() {
   }
 
   console.log(newGuestMeal)
+
+  //#region ⬇⬇ All rendering below:
   return (
     <div className="App">
-      <header>
+      <Header />
+      {/* <header>
         <h1>Prim Proper Props</h1>
-      </header>
+      </header> */}
       <h2>Party Leader</h2>
       {guestList[0] && <h3>{guestList[0].name}</h3>}
       <h2>Add a new guest</h2>
@@ -132,7 +144,9 @@ function App() {
         <p>Don't forget to mind your Ps and Qs!</p>
       </footer>
     </div>
-  );
-}
+  ); // End return
+  //#endregion ⬆⬆ All rendering above. 
+} // End App()
+
 
 export default App;
