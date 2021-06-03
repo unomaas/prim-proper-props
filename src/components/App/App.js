@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import GuestList from "../GuestList/GuestList";
 import DinnerSupplies from "../DinnerSupplies/DinnerSupplies";
 import GuestForm from "../GuestForm/GuestForm";
+import PartyLeader from "../PartyLeader/PartyLeader";
 //#endregion ⬆⬆ All document setup above. 
 
 
@@ -70,13 +71,13 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <PartyLeader leader={guestList[0]} />
       <GuestForm 
         newGuestName={newGuestName}
         setNewGuestName={setNewGuestName}
         newGuestMeal={newGuestMeal}
         setNewGuestMeal={setNewGuestMeal}
         handleSubmit={handleSubmit}
-        guestList={guestList}
       />
       <GuestList guestList={guestList} />
       <DinnerSupplies guestList={guestList} />
