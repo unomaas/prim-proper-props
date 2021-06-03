@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import GuestList from "../GuestList/GuestList";
 //#endregion ⬆⬆ All document setup above. 
 
 
@@ -111,7 +112,8 @@ function App() {
         </div>
         <button type="submit">Add Guest</button>
       </form>
-      <h2>Guest List</h2>
+      <GuestList guestList={guestList} />
+      {/* <h2>Guest List</h2>
       <table>
         <thead>
           <tr>
@@ -127,7 +129,7 @@ function App() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
       <h2>Dinner Supplies</h2>
       <div>
         Spoons: {guestList.length * 2}
