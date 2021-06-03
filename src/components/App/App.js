@@ -80,7 +80,7 @@ function App() {
         handleSubmit={handleSubmit}
       />
       <GuestList guestList={guestList} />
-      <DinnerSupplies guestList={guestList} />
+      <DinnerSupplies count={guestList.length} />
       <Footer />
     </div>
   ); // End return
